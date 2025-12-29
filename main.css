@@ -1,0 +1,239 @@
+* {
+  font-family: Garamond, "Hoefler Text", "Times New Roman", serif;
+  color: lightgray;
+}
+
+body {
+  background: rgb(5, 5, 20);
+  counter-reset: note;
+}
+
+h1 {
+  --title-size: max(3rem, 10vh);
+  font-size: var(--title-size);
+  text-align: center;
+
+  &::before {
+    content: "";
+    display: inline-block;
+    height: var(--title-size);
+    width: calc(var(--title-size) * 2);
+    background-image: url("img/sherlock-pipe.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+}
+
+h2 {
+  margin-top: 2.5rem;
+}
+
+
+
+.home-nav {
+  position: relative;
+  display: flex;
+  min-height: 5vh;
+  z-index: 1;
+
+  .dropdown {
+    flex: 1;
+    anchor-scope: --navbutton;
+
+    .drop-button {
+      anchor-name: --navbutton;
+      background-color: rgb(50, 50, 50);
+      font-size: 95%;
+      width: 100%;
+      display: inline-block;
+      text-decoration: none;
+      text-align: center;
+      border: 2px solid black;
+      box-sizing: border-box;
+      padding-top: 2.5%;
+      padding-bottom: 2.5%;
+    }
+
+    .drop-content {
+      display: none;
+      position: absolute;
+      position-anchor: --navbutton;
+      position-area: bottom center;
+      width: 100%;
+    }
+  }
+
+  .drop-content a {
+    display: inline-block;
+    background-color: rgb(50, 50, 50);
+    font-size: 95%;
+    width: 100%;
+    text-decoration: none;
+    text-align: center;
+    border: 2px solid black;
+    box-sizing: border-box;
+    padding-top: 2.5%;
+    padding-bottom: 2.5%;
+  }
+
+  .drop-button:hover {
+    cursor: pointer;
+  }
+
+  .dropdown:hover .drop-content {
+    display: block;
+  }
+
+
+
+}
+
+
+
+p {
+  text-indent: 2rem;
+  line-height: 2;
+}
+
+[src="./img/sherlock-portrait.jpg"] {
+  float: right;
+  margin-left: 3rem;
+}
+
+.footnote-link {
+  color: steelblue;
+  counter-increment: note;
+  text-decoration: none;
+}
+
+.footnote-link::after {
+  content: counter(note);
+  font-size: small;
+  vertical-align: super;
+}
+
+.sources {
+  line-height: 2;
+}
+
+
+
+.char-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.char-desc {
+  margin-left: 3rem;
+  margin-top: 5rem;
+  border: 2px solid gray;
+  padding: 1rem;
+}
+
+[src="img/sherlock_standing_pic.jpg"] {
+  height: 250px;
+}
+
+li {
+  padding-left: 0.5rem;
+  margin-top: 0.5rem;
+  line-height: 1.25;
+}
+
+.movie-desc1,
+.movie-desc2,
+.movie-desc3 {
+
+  position: relative;
+  left: 5%;
+
+  transition-property: transform;
+  transition-duration: 750ms;
+  transition-delay: 200ms;
+  transition-timing-function: ease;
+
+
+  &>li::marker {
+    content: "⭐";
+  }
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+
+}
+
+.movie-details li::marker {
+  content: "🎬";
+}
+
+
+.movie-desc ul {
+  margin-bottom: 1rem;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+
+
+.show-descs {
+  display: flex;
+  justify-content: space-around;
+
+  .show-pair {
+
+    --image-width: 300px;
+    background-color: rgb(50, 50, 50);
+    margin-top: 10%;
+    margin-bottom: 10%;
+    margin-right: 5%;
+    padding: 1%;
+    flex: 1;
+    max-width: var(--image-width);
+    position: relative;
+
+    img {
+      max-width: var(--image-width);
+      margin-bottom: 20%;
+    }
+
+    h2 {
+      margin-top: 0;
+      text-align: center;
+    }
+
+    button {
+      box-sizing: border-box;
+      background-color: rgb(50, 50, 50);
+      margin-top: 2.5%;
+      margin-bottom: 2.5%;
+      padding: 2.5%;
+      width: 85%;
+      border-radius: 8px;
+      position: absolute;
+      height: 12.5%;
+      bottom: 2.5%;
+      left: 7.5%;
+      cursor: pointer;
+      animation: pulse 4s infinite;
+    }
+
+  }
+
+}
+
+
+.popover {
+  background-color: rgb(50, 50, 50);
+  position-area: bottom center;
+}
